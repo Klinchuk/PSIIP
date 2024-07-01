@@ -1,87 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пустой сайт</title>
-    <script>
-        function showCurrentDay() {
-            let currentDate = new Date();
-            let currentDay = currentDate.getDate();
-            alert("Сегодня " + currentDay + " число.");
-        }
-    </script>
-    <script src="calculate.js"></script>
-    <script src="strings.js"></script>
+    <title>Document</title>
 </head>
 <body>
-    <button onclick="showCurrentDay()">Показать число</button>
-    
-    <script>
-        function displayName() {
-            let n = 7;
-            let count = n + 5;
-            let i = 0;
-            let name = "Клинчук Влад";
-            let output = "";
-            
-            do {
-                output += name + "<br>";
-                i++;
-            } while (i < count);
-            
-            document.getElementById("output").innerHTML = output;
-        }
-    </script>
-    
-    <button onclick="displayName()">Показать имя и фамилию</button>
-    <div id="output"></div>
-    
-    <script>
-        function processArray() {
-            // Сформировать массив из 6 целых элементов
-            let array = [12, 7, 3, 18, 5, 2];
-            let originalArray = array.slice(); // Копируем исходный массив
-            let sumEven = 0;
-            
-            // Найти сумму четных элементов в массиве
-            for (let i = 0; i < array.length; i++) {
-                if (array[i] % 2 === 0) {
-                    sumEven += array[i];
-                }
-            }
-            
-            // Выполнить сортировку элементов массива по убыванию
-            array.sort(function(a, b) {
-                return b - a;
-            });
-            
-            // Вывести исходный и измененный массив
-            let output = "Исходный массив: " + originalArray.join(", ") + "<br>";
-            output += "Сумма четных элементов: " + sumEven + "<br>";
-            output += "Измененный массив (по убыванию): " + array.join(", ");
-            
-            document.getElementById("arrayOutput").innerHTML = output;
-        }
-    </script>
-    
-    <button onclick="processArray()">Обработать массив</button>
-    <div id="arrayOutput"></div>
-    
-    <!-- Форма для ввода значений a и x -->
-    <div>
-        <label for="inputA">Введите значение a:</label>
-        <input type="number" id="inputA">
-    </div>
-    <div>
-        <label for="inputX">Введите значение x:</label>
-        <input type="number" id="inputX">
-    </div>
-    <button onclick="displayResult()">Рассчитать y</button>
-    <div id="result"></div>
-
-    <!-- Кнопка для выполнения работы со строками -->
-    <button onclick="displayStringResults()">Обработать строки</button>
-    <div id="stringOutput"></div>
+    <a href="карточка/index.html">карточка</a>
+    <a href="карточка2/">карточка2</a>
+    <a href="ЛР1/ЛР1-3.html">1</a>
+    <a href="ЛР5/index.html">5</a>
+    <a href="ЛР6/index.html">6</a>
+    <a href="ЛР8/index.html">8</a>
+    <a href="ЛР9/index.html">9</a>
 </body>
 </html>
