@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ товара и Кухонный стол</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .order-form, .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 450px;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-header h2 {
+            margin: 0;
+        }
+
+        .form-header a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .form-header a:hover {
+            text-decoration: underline;
+        }
+
+        .form-content p {
+            margin: 10px 0;
+        }
+
+        .form-details {
+            margin-bottom: 20px;
+        }
+
+        .form-details p {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        .form-details p.total {
+            font-weight: bold;
+        }
+
+        .form-details p span {
+            display: inline-block;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input, textarea, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .product-card {
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-info h2 {
+            margin: 10px 0;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .product-dimensions {
+            margin: 10px 0;
+        }
+
+        .product-dimensions p {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+        }
+
+        .more-info {
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .more-info:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            border: 2px solid red;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector('form');
+            const nameInput = document.getElementById('name');
+            const phoneInput = document.getElementById('phone');
+            const commentTextarea = document.getElementById('comment');
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                let isValid = true;
+                
+                // Clear previous errors
+                document.querySelectorAll('.error-message').forEach(e => e.remove());
+                nameInput.classList.remove('error');
+                phoneInput.classList.remove('error');
+                commentTextarea.classList.remove('error');
+
+                // Name validation
+                if (!nameInput.value.trim()) {
+                    isValid = false;
+                    showError(nameInput, 'Это поле обязательно для заполнения.');
+                } else if (nameInput.value.length > 50) {
+                    isValid = false;
+                    showError(nameInput, 'Имя не должно превышать 50 символов.');
+                }
+
+                // Phone validation
+                const phonePattern = /^\+?[0-9\s\-]+$/;
+                if (!phoneInput.value.trim()) {
+                    isValid = false;
+                    showError(phoneInput, 'Это поле обязательно для заполнения.');
+                } else if (!phonePattern.test(phoneInput.value)) {
+                    isValid = false;
+                    showError(phoneInput, 'Введите корректный номер телефона.');
+                } else if (phoneInput.value.length > 15) {
+                    isValid = false;
+                    showError(phoneInput, 'Номер телефона не должен превышать 15 символов.');
+                }
+
+                // Comment validation
+                if (commentTextarea.value.length > 200) {
+                    isValid = false;
+                    showError(commentTextarea, 'Комментарий не должен превышать 200 символов.');
+                }
+
+                if (isValid) {
+                    alert('Форма успешно отправлена!');
+                    form.submit();
+                }
+            });
+
+            function showError(input, message) {
+                const error = document.createElement('div');
+                error.className = 'error-message';
+                error.textContent = message;
+                input.classList.add('error');
+                input.insertAdjacentElement('afterend', error);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="order-form">
+            <div class="form-header">
+                <h2>Заказ товара</h2>
+                <a href="#">Отменить заказ</a>
+            </div>
+            <div class="form-content">
+                <p>Строительный мусоропровод</p>
+                <div class="form-details">
+                    <p><span>Высота:</span> <span>16 м</span></p>
+                    <p><span>Секции с шляпками:</span> <span>15 шт.</span> <span>4 272 000 р.</span></p>
+                    <p><span>Погрузочный короб:</span> <span>1 шт.</span> <span>312 000 р.</span></p>
+                    <p><span>Крепежи к окну:</span> <span>1 шт.</span> <span>720 000 р.</span></p>
+                    <p class="total"><span>Итого:</span> <span>5 037 000 р. (с НДС)</span></p>
+                    <p>Чтобы изменить заказ, <a href="#">вернитесь к расчёту комплекта</a>.</p>
+                </div>
+                <form>
+                    <label for="name">Представьтесь</label>
+                    <input type="text" id="name" name="name">
+                    <label for="phone">Ваш телефон</label>
+                    <input type="tel" id="phone" name="phone">
+                    <label for="comment">Примечание к заказу</label>
+                    <textarea id="comment" name="comment"></textarea>
+                    <button type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="photo.jpg" alt="Кухонный стол Хэллер Light">
+            <div class="product-info">
+                <h2>Кухонный стол Хэллер Light</h2>
+                <p class="price">1082 руб.</p>
+                <div class="product-dimensions">
+                    <p><span>Длина:</span> <span>100 см</span></p>
+                    <p><span>Ширина:</span> <span>100 см</span></p>
+                    <p><span>Высота:</span> <span>75 см</span></p>
+                </div>
+                <button type="button">В корзину</button>
+                <a href="#" class="more-info">Подробнее о товаре</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

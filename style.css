@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    background-color: antiquewhite;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    height: 100vh;
+    padding: 10px;
+    gap: 10px;
+}
+
+.item {
+    border: 1px solid black; /* Border for visibility */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.item-1 { flex: 0 0 calc(100% - 20px); height: calc(16.66% - 10px); }
+.item-2 { flex: 0 0 calc(16.66% - 10px); height: calc(66.66% - 10px); }
+.item-3 { flex: 0 0 calc(16.66% - 10px); height: calc(66.66% - 10px); }
+.item-4 { flex: 0 0 calc(33.33% - 10px); height: calc(33.33% - 10px); }
+.item-5 { flex: 0 0 calc(33.33% - 10px); height: calc(33.33% - 10px); }
+.item-6 { flex: 0 0 calc(16.66% - 10px); height: calc(33.33% - 10px); }
+.item-7 { flex: 0 0 calc(16.66% - 10px); height: calc(33.33% - 10px); }
+.item-8 { flex: 0 0 calc(16.66% - 10px); height: calc(33.33% - 10px); }
+.item-9 { flex: 0 0 calc(16.66% - 10px); height: calc(33.33% - 10px); }
+.item-10 { flex: 0 0 calc(33.33% - 10px); height: calc(16.66% - 10px); }
+.item-11 { flex: 0 0 calc(16.66% - 10px); height: calc(16.66% - 10px); }
+.item-12 { flex: 0 0 calc(16.66% - 10px); height: calc(16.66% - 10px); }
+.item-13 { flex: 0 0 calc(100% - 20px); height: calc(16.66% - 10px); }
+
+/* Media Queries */
+
+/* Small devices (600px and below) */
+@media (max-width: 600px) {
+    .flex-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .item-1, .item-2, .item-3, .item-4, .item-5, .item-6, .item-7, 
+    .item-8, .item-9, .item-10, .item-11, .item-12, .item-13 {
+        flex: 0 0 auto;
+        height: auto;
+    }
+}
+
+/* Medium devices (600px to 900px) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .flex-container {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    .item-1 { flex: 0 0 100%; height: auto; }
+    .item-2 { flex: 0 0 25%; height: auto; }
+    .item-3 { flex: 0 0 25%; height: auto; }
+    .item-4 { flex: 0 0 50%; height: auto; }
+    .item-5 { flex: 0 0 50%; height: auto; }
+    .item-6 { flex: 0 0 25%; height: auto; }
+    .item-7 { flex: 0 0 25%; height: auto; }
+    .item-8 { flex: 0 0 25%; height: auto; }
+    .item-9 { flex: 0 0 25%; height: auto; }
+    .item-10 { flex: 0 0 50%; height: auto; }
+    .item-11 { flex: 0 0 25%; height: auto; }
+    .item-12 { flex: 0 0 25%; height: auto; }
+    .item-13 { flex: 0 0 100%; height: auto; }
+}
